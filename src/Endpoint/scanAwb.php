@@ -1,33 +1,23 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\scanAwb.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
+class ScanAwb extends EndPoint
+{
 
-use FanCourier\Endpoint\Endpoint;
+    /**
+     * EndPoint url.
+     *
+     * @var string
+     */
+    protected $url = 'https://www.selfawb.ro/download_awb_scan_integrat.php';
 
-/**
- * Controller for FanCourier scan AWB.
- *
- * @author csaba.balint@reea.net
- */
-class scanAwb extends Endpoint {
-
-  /**
-   * Endpoint url.
-   *
-   * @var string 
-   */
-  protected $url = 'https://www.selfawb.ro/download_awb_scan_integrat.php';
-
-  /**
-   * Construct setups.
-   */
-  public function __construct() {
-    $this->setRequirements(['AWB']);
-  }
+    /**
+     * Construct setups.
+     */
+    public function __construct()
+    {
+        $this->setRequirements(['AWB']);
+    }
 
 }

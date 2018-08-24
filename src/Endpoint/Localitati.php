@@ -1,28 +1,17 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\Localitati.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
+use FanCourier\Plugin\Csv\CsvResult;
 
-use FanCourier\Endpoint\Endpoint;
+class Localitati extends EndPoint
+{
 
-/**
- * Controller for FanCourier distance info.
- *
- * @author csaba.balint@reea.net
- */
-class Localitati extends Endpoint {
+    use CsvResult;
 
-  use \FanCourier\Plugin\csv\csvResult;
-
-  /**
-   * Endpoint url.
-   *
-   * @var string 
-   */
-  protected $url = 'https://www.selfawb.ro/export_distante_integrat.php';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.selfawb.ro/export_distante_integrat.php';
 
 }

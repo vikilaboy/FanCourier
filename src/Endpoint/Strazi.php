@@ -1,28 +1,18 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\Strazi.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
+use FanCourier\Plugin\Csv\CsvResult;
 
-use FanCourier\Endpoint\Endpoint;
+class Strazi extends EndPoint
+{
+    use CsvResult;
 
-/**
- * Controller for FanCourier streets.
- *
- * @author csaba.balint@reea.net
- */
-class Strazi extends Endpoint {
-
-  use \FanCourier\Plugin\csv\csvResult;
-
-  /**
-   * Endpoint url.
-   *
-   * @var string 
-   */
-  protected $url = 'https://www.selfawb.ro/export_strazi_integrat.php';
+    /**
+     * EndPoint url.
+     *
+     * @var string
+     */
+    protected $url = 'https://www.selfawb.ro/export_strazi_integrat.php';
 
 }

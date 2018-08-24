@@ -1,35 +1,24 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\exportOrders.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
+use FanCourier\Plugin\Csv\CsvResult;
 
-use FanCourier\Endpoint\Endpoint;
+class ExportOrders extends EndPoint
+{
+    use CsvResult;
 
-/**
- * Controller for FanCourier orders export.
- *
- * @author csaba.balint@reea.net
- */
-class exportOrders extends Endpoint {
+    /**
+     * @var string EndPoint Url
+     */
+    protected $url = 'https://www.selfawb.ro/export_comenzi_integrat.php';
 
-  use \FanCourier\Plugin\csv\csvResult;
-
-  /**
-   * Endpoint url.
-   *
-   * @var string 
-   */
-  protected $url = 'https://www.selfawb.ro/export_comenzi_integrat.php';
-
-  /**
-   * Construct setups.
-   */
-  public function __construct() {
-    $this->setRequirements(['data']);
-  }
+    /**
+     * Construct setups.
+     */
+    public function __construct()
+    {
+        $this->setRequirements(['data']);
+    }
 
 }

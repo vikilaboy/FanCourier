@@ -1,25 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\Observatii.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
+use FanCourier\Plugin\Csv\CsvResult;
 
-use FanCourier\Endpoint\Endpoint;
+class Observatii extends EndPoint {
 
-/**
- * Controller for FanCourier notifications.
- *
- * @author csaba.balint@reea.net
- */
-class Observatii extends Endpoint {
-
-  use \FanCourier\Plugin\csv\csvResult;
+  use CsvResult;
 
   /**
-   * Endpoint url.
+   * EndPoint url.
    *
    * @var string 
    */

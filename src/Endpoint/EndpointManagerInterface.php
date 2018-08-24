@@ -1,8 +1,8 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-interface EndpointManagerInterface
+interface EndPointManagerInterface
 {
-    public function getEndpoint($endpoint);
+    public function getEndpoint($endPoint);
 }

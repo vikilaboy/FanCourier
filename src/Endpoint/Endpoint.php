@@ -1,29 +1,16 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\Endpoint.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
-
-use FanCourier\Endpoint\EndpointInterface;
 use FanCourier\Plugin\Curl;
-use FanCourier\Plugin\Exeption\FanCourierApiExeption;
+use FanCourier\Plugin\Exception\FanCourierApiException;
 
-/**
- * Endpoint controller class.
- *
- * @author csaba.balint@reea.net
- */
-abstract class Endpoint implements EndpointInterface
+abstract class EndPoint implements EndPointInterface
 {
     use ParamError;
 
     /**
-     * Result of CURL request.
-     *
-     * @var array
+     * @var null
      */
     public $result = null;
 
@@ -32,12 +19,10 @@ abstract class Endpoint implements EndpointInterface
      *
      * @var bool
      */
-    public $result_with_header = true;
+    public $resultWithHeader = true;
 
     /**
-     * New controller class.
-     *
-     * @return \FanCourier\Endpoint\class
+     * @return mixed
      */
     public static function newEndpoint()
     {
@@ -49,36 +34,35 @@ abstract class Endpoint implements EndpointInterface
     /**
      * Set params for CURL call.
      *
-     * @param array $post_params
+     * @param array $postParams
      */
-    public function setParams(array $post_params)
+    public function setParams(array $postParams)
     {
-        $this->post_params = $post_params;
+        $this->postParams = $postParams;
     }
 
     /**
      * Make CURL call.
      *
-     * @throws FanCourierApiExeption
+     * @throws FanCourierApiException
      */
     public function curlCall()
     {
         $this->checkErrors();
 
         $curl = new Curl($this->url);
-        $rp = $curl->curlRequest($this->post_params);
+        $rp = $curl->curlRequest($this->postParams);
 
         if ($rp['info']['http_code'] == 200) {
             $this->result = $rp['response'];
         } else {
-            throw new FanCourierApiExeption($rp['response'], $rp['info']['http_code']);
+            throw new FanCourierApiException($rp['response'], $rp['info']['http_code']);
         }
     }
 
     /**
-     * Return curl call result.
-     *
-     * @return type
+     * @return array
+     * @throws FanCourierApiException
      */
     public function getResult()
     {
@@ -92,16 +76,17 @@ abstract class Endpoint implements EndpointInterface
      */
     public function noHeader()
     {
-        $this->result_with_header = false;
+        $this->resultWithHeader = false;
     }
 
     /**
-     * Convert csv/text to array.
+     * Convert csv to array
      */
     public function csvToArray()
     {
-        $this->result = str_getcsv($this->result, "\n");
-        if (!$this->result_with_header) {
+        $this->result = str_getcsv($this->result, PHP_EOL);
+
+        if (!$this->resultWithHeader) {
             unset($this->result[0]);
         }
     }

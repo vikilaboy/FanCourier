@@ -1,35 +1,26 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\exportBorderou.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
+use FanCourier\Plugin\Csv\CsvResult;
 
-use FanCourier\Endpoint\Endpoint;
+class ExportBorderou extends EndPoint
+{
+    use CsvResult;
 
-/**
- * Controller for FanCourier docket export.
- *
- * @author csaba.balint@reea.net
- */
-class exportBorderou extends Endpoint {
+    /**
+     * EndPoint url.
+     *
+     * @var string
+     */
+    protected $url = 'https://www.selfawb.ro/export_borderou_integrat.php';
 
-  use \FanCourier\Plugin\csv\csvResult;
-
-  /**
-   * Endpoint url.
-   *
-   * @var string 
-   */
-  protected $url = 'https://www.selfawb.ro/export_borderou_integrat.php';
-
-  /**
-   * Construct setups.
-   */
-  public function __construct() {
-    $this->setRequirements(['data']);
-  }
+    /**
+     * Construct setups.
+     */
+    public function __construct()
+    {
+        $this->setRequirements(['data']);
+    }
 
 }
