@@ -2,9 +2,9 @@
 
 namespace FanCourier;
 
-use FanCourier\Endpoint\EndpointManager;
+use FanCourier\EndPoint\EndPointManager;
 
-class FanCourier extends EndpointManager
+class FanCourier extends EndPointManager
 {
     const REPAYMENT_DEST = 'destinatar';
     const REPAYMENT_EXP = 'expeditor';

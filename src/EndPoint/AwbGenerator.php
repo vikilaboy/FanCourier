@@ -1,18 +1,17 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Endpoint\Endpoint;
 use FanCourier\Plugin\Csv\CsvGenerator;
 use FanCourier\Plugin\Csv\CsvResult;
 
-class AwbGenerator extends Endpoint
+class AwbGenerator extends EndPoint
 {
     use CsvGenerator;
     use CsvResult;
 
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */

@@ -1,24 +1,22 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Endpoint\Endpoint;
-
-class PrintAwb extends Endpoint
+class PrintAwb extends EndPoint
 {
     /**
-     * Endpoint url for HTML response.
+     * EndPoint url for HTML response.
      *
      * @var string
      */
-    protected $url_html = 'https://www.selfawb.ro/view_awb_integrat.php';
+    protected $urlHtml = 'https://www.selfawb.ro/view_awb_integrat.php';
 
     /**
-     * Endpoint url for PDF response.
+     * EndPoint url for PDF response.
      *
      * @var string
      */
-    protected $url_pdf = 'https://www.selfawb.ro/view_awb_integrat_pdf.php';
+    protected $urlPdf = 'https://www.selfawb.ro/view_awb_integrat_pdf.php';
 
     /**
      * Print result type.(html or pdf)
@@ -32,7 +30,7 @@ class PrintAwb extends Endpoint
      */
     public function __construct()
     {
-        $this->url = $this->url_html;
+        $this->url = $this->urlHtml;
         $this->setRequirements(['nr']);
     }
 
@@ -45,10 +43,10 @@ class PrintAwb extends Endpoint
     {
         $this->type = $type;
         if ($type == 'html') {
-            $this->url = $this->url_html;
+            $this->url = $this->urlHtml;
         } else {
             if ($type == 'pdf') {
-                $this->url = $this->url_pdf;
+                $this->url = $this->urlPdf;
             }
         }
     }

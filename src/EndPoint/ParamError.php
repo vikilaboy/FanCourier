@@ -1,14 +1,14 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Plugin\Exeption\FanCourierApiExeption;
+use FanCourier\Plugin\Exception\FanCourierApiException;
 
 trait ParamError
 {
 
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */
@@ -20,7 +20,7 @@ trait ParamError
      *
      * @var array
      */
-    protected $post_requirements = [
+    protected $postRequirements = [
         'username',
         'user_pass',
         'client_id'
@@ -31,12 +31,12 @@ trait ParamError
      *
      * @var array
      */
-    protected $post_params = [];
+    protected $postParams = [];
 
     /**
      * Check for errors.
      *
-     * @throws FanCourierApiExeption
+     * @throws FanCourierApiException
      */
     public function checkErrors()
     {
@@ -44,16 +44,16 @@ trait ParamError
         $url = parse_url($this->url);
         if (!$url['scheme'] || !$url['host'] || !$url['path']) {
             $expected = 'http:\\\HOST\api_endpoint.php';
-            $errors .= "Endpoint url format is wrong.<br/>\r\nExpected: $expected<br/>\r\nGot: $this->url <br/>\r\n";
+            $errors .= "EndPoint url format is wrong.<br/>\r\nExpected: $expected<br/>\r\nGot: $this->url <br/>\r\n";
         }
-        if ($this->post_requirements) {
-            foreach ($this->post_requirements as $requirement) {
-                if (!isset($this->post_params[$requirement]) || is_null($this->post_params[$requirement])) {
+        if ($this->postRequirements) {
+            foreach ($this->postRequirements as $requirement) {
+                if (!isset($this->postParams[$requirement]) || is_null($this->postParams[$requirement])) {
                     $errors .= "Param `$requirement` is missing or empty.<br/>\r\n";
                 }
             }
             if ($errors) {
-                throw new FanCourierApiExeption($errors, 400);
+                throw new FanCourierApiException($errors, 400);
             }
         }
     }
@@ -61,17 +61,17 @@ trait ParamError
     /**
      * Update of override requirements.
      *
-     * @param type $requirement
+     * @param array $requirement
      *   Params expected in HTTP request.
-     * @param type $override
+     * @param bool $override
      *   Override the post_requirements variable if TRUE. Else is updating.
      */
     protected function setRequirements($requirement, $override = false)
     {
         if ($override) {
-            $this->post_requirements = $requirement;
+            $this->postRequirements = $requirement;
         } else {
-            $this->post_requirements = array_merge($this->post_requirements, $requirement);
+            $this->postRequirements = array_merge($this->postRequirements, $requirement);
         }
     }
 

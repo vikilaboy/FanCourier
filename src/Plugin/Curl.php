@@ -4,7 +4,6 @@ namespace FanCourier\Plugin;
 
 class Curl
 {
-
     /**
      * URL for CURL request.
      *
@@ -26,7 +25,7 @@ class Curl
     /**
      * Making a CURL request.
      *
-     * @param type $post
+     * @param array $post
      *   Array of CURL request params.
      *
      * @return array

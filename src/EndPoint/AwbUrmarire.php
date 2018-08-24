@@ -1,24 +1,17 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\awbUrmarire.
- */
-
-namespace FanCourier\Endpoint;
-
-use FanCourier\Endpoint\Endpoint;
+namespace FanCourier\EndPoint;
 
 /**
  * Controller for FanCourier new AWB tracking.
  *
  * @author csaba.balint@reea.net
  */
-class awbUrmarire extends Endpoint
+class AwbUrmarire extends EndPoint
 {
 
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */

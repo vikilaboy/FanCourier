@@ -1,14 +1,14 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-interface EndpointInterface
+interface EndPointInterface
 {
     public static function newEndpoint();
 
     public function getResult();
 
-    public function setParams(array $post_params);
+    public function setParams(array $postParams);
 
     public function checkErrors();
 }

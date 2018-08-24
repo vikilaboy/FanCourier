@@ -45,7 +45,7 @@ trait CsvMapping
         ];
     }
 
-    public function getMachinNames()
+    public function getMatchingNames()
     {
         return [
             'tip' => 0,

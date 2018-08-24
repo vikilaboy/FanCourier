@@ -1,11 +1,10 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Endpoint\EndpointManagerInterface;
-use FanCourier\Plugin\Exeption\FanCourierApiExeption;
+use FanCourier\Plugin\Exception\FanCourierApiException;
 
-abstract class EndpointManager implements EndpointManagerInterface
+abstract class EndPointManager implements EndPointManagerInterface
 {
     /**
      * Returning the endpoint controller.
@@ -13,9 +12,9 @@ abstract class EndpointManager implements EndpointManagerInterface
      * @param string $endpoint - Name of the endpoint controller.
      * @param array  $params   - Array of params to send for ::setUp function.
      *
-     * @return Endpoint
+     * @return EndPoint
      *
-     * @throws FanCourierApiExeption - No endpoint exeption.
+     * @throws FanCourierApiException - No endpoint exeption.
      *
      */
     public function getEndpoint($endpoint)
@@ -23,7 +22,7 @@ abstract class EndpointManager implements EndpointManagerInterface
         if (class_exists(sprintf('FanCourier\Endpoint\%s', $endpoint))) {
             return call_user_func(sprintf('FanCourier\Endpoint\%s::newEndpoint', $endpoint));
         } else {
-            throw new FanCourierApiExeption(sprintf('Unrecognized endpoint:%s', $endpoint), 400);
+            throw new FanCourierApiException(sprintf('Unrecognized endpoint:%s', $endpoint), 400);
         }
     }
 }

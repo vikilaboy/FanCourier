@@ -1,21 +1,20 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Endpoint\Endpoint;
-use FanCourier\Plugin\Exeption\FanCourierApiExeption;
+use FanCourier\Plugin\Exception\FanCourierApiException;
 
-class Price extends Endpoint
+class Price extends EndPoint
 {
     /**
      * Cache the original requirements.
      *
      * @var array
      */
-    protected $requirements_cache = [];
+    protected $requirementsCache = [];
 
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */
@@ -33,7 +32,7 @@ class Price extends Endpoint
      *
      * @var array
      */
-    protected $requirements_internal = [
+    protected $requirementsInternal = [
         'localitate_dest',
         'judet_dest',
         'plicuri',
@@ -51,7 +50,7 @@ class Price extends Endpoint
      *
      * @var array
      */
-    protected $requirements_export = [
+    protected $requirementsExport = [
         'modtrim',
         'greutate',
         'pliccolet',
@@ -64,37 +63,35 @@ class Price extends Endpoint
         'km ext'
     ];
 
+
+    public function __construct()
+    {
+        $this->setRequirements(['serviciu']);
+        $this->requirementsCache = $this->postRequirements;
+        $this->setRequirements($this->requirementsInternal);
+    }
+
+
     /**
      * Set type of price calculation.
      *
      * @param string $type
      *
-     * @throws FanCourierApiExeption
+     * @throws FanCourierApiException
      */
     public function setType($type)
     {
         if ($type == 'internal' || $type == 'export') {
             switch ($type) {
                 case 'internal':
-                    $this->setRequirements(array_merge($this->requirements_cache, $this->requirements_internal), true);
+                    $this->setRequirements(array_merge($this->requirementsCache, $this->requirementsInternal), true);
                     break;
                 case 'export':
-                    $this->setRequirements(array_merge($this->requirements_cache, $this->requirements_export), true);
+                    $this->setRequirements(array_merge($this->requirementsCache, $this->requirementsExport), true);
                     break;
             }
         } else {
-            throw new FanCourierApiExeption('Invalid type. Accepted values "internal" or "export"', 400);
+            throw new FanCourierApiException('Invalid type. Accepted values "internal" or "export"', 400);
         }
     }
-
-    /**
-     * Construct setups.
-     */
-    public function __construct()
-    {
-        $this->setRequirements(['serviciu']);
-        $this->requirements_cache = $this->post_requirements;
-        $this->setRequirements($this->requirements_internal);
-    }
-
 }

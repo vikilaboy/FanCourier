@@ -1,16 +1,15 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Endpoint\Endpoint;
 use FanCourier\Plugin\Csv\CsvResult;
 
-class AwbErrors extends Endpoint
+class AwbErrors extends EndPoint
 {
     use CsvResult;
 
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */

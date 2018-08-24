@@ -1,13 +1,11 @@
 <?php
 
-namespace FanCourier\Endpoint;
+namespace FanCourier\EndPoint;
 
-use FanCourier\Endpoint\Endpoint;
-
-class DeleteAwb extends Endpoint
+class DeleteAwb extends EndPoint
 {
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */

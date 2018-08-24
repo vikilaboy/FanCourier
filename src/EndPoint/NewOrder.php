@@ -1,24 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains \FanCourier\Endpoint\newOrder.
- */
+namespace FanCourier\EndPoint;
 
-namespace FanCourier\Endpoint;
-
-use FanCourier\Endpoint\Endpoint;
-
-/**
- * Controller for FanCourier new Order.
- *
- * @author csaba.balint@reea.net
- */
-class newOrder extends Endpoint
+class NewOrder extends EndPoint
 {
 
     /**
-     * Endpoint url.
+     * EndPoint url.
      *
      * @var string
      */
@@ -29,7 +17,8 @@ class newOrder extends Endpoint
      */
     public function __construct()
     {
-        $this->setRequirements([
+        $this->setRequirements(
+            [
                 'pers_contact',
                 'tel',
                 'email',
@@ -38,7 +27,8 @@ class newOrder extends Endpoint
                 'lungime',
                 'latime',
                 'ora_ridicare',
-            ]);
+            ]
+        );
     }
 
 }

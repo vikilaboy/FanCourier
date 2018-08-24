@@ -2,7 +2,6 @@
 
 namespace FanCourier\Plugin\Csv;
 
-use FanCourier\Plugin\csv\csvItem;
 use CURLFile;
 
 trait CsvGenerator
@@ -14,24 +13,19 @@ trait CsvGenerator
      *
      * @var string
      */
-    private $tmpfname;
+    private $tmpFName;
 
     /**
-     * The csv file.
-     *
-     * @var file
+     * @var
      */
     private $csv;
 
     /**
-     * New CURL file.
-     *
      * @return CURLFile
-     *   Return file object for a CURL request.
      */
     public function getFile()
     {
-        return new CURLFile($this->tmpfname, 'text/csv', 'fisier');
+        return new CURLFile($this->tmpFName, 'text/csv', 'fisier');
     }
 
     /**
@@ -39,8 +33,8 @@ trait CsvGenerator
      */
     public function createFile()
     {
-        $this->tmpfname = tempnam("/tmp", "FanCourier");
-        $this->csv = fopen($this->tmpfname, 'a');
+        $this->tmpFName = tempnam("/tmp", "FanCourier");
+        $this->csv = fopen($this->tmpFName, 'a');
         fputcsv($this->csv, $this->getHeader(), ',', chr(0));
     }
 
@@ -64,7 +58,7 @@ trait CsvGenerator
      */
     public function csvToText()
     {
-        $fp = fopen($this->tmpfname, "r");
+        $fp = fopen($this->tmpFName, "r");
         $csv = stream_get_contents($fp);
         fclose($fp);
 

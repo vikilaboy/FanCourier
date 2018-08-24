@@ -14,11 +14,11 @@ class CsvItem
     private $item;
 
     /**
-     * Creat a blank csv item.
+     * Create a blank csv item.
      */
     public function __construct()
     {
-        $this->item = array_fill(0, count($this->getMachinNames()) - 1, '');
+        $this->item = array_fill(0, count($this->getMatchingNames()) - 1, '');
     }
 
     /**
@@ -32,7 +32,7 @@ class CsvItem
     }
 
     /**
-     * @param type $key CSV column id
+     * @param $key CSV column id
      * @param $value
      *
      * @see \FanCourier\Plugin\Csv\csvMapping::getMachinNames()
@@ -56,7 +56,7 @@ class CsvItem
         static $map;
 
         if (!$map) {
-            $map = $this->getMachinNames();
+            $map = $this->getMatchingNames();
         }
 
         foreach ($items as $key => $value) {

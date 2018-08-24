@@ -1,21 +1,17 @@
 {
-  "name": "curier/fancourier",
-  "version": "1.0.3",
-  "type": "library",
-  "license": "GPL",
+  "name": "vikilaboy/FanCourier",
   "description": "API for FanCourier express courier services.",
   "authors": [
     {
       "name": "Csaba Balint",
       "email": "balintcsaba89@gmail.com"
+    },
+    {
+      "name": "Victor Niculae",
+      "email": "victor@niculae.net"
     }
   ],
-  "minimum-stability": "dev",
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0.x-dev"
-    }
-  },
+  "minimum-stability": "dev-master",
   "autoload": {
     "psr-4": {
       "FanCourier\\": "src/"
