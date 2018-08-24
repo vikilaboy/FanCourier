@@ -11,7 +11,7 @@
       "email": "victor@niculae.net"
     }
   ],
-  "minimum-stability": "dev-master",
+  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "FanCourier\\": "src/"
