@@ -19,10 +19,10 @@ abstract class EndPointManager implements EndPointManagerInterface
      */
     public function getEndpoint($endpoint)
     {
-        if (class_exists(sprintf('FanCourier\Endpoint\%s', $endpoint))) {
-            return call_user_func(sprintf('FanCourier\Endpoint\%s::newEndpoint', $endpoint));
+        if (class_exists(sprintf('FanCourier\EndPoint\%s', ucfirst($endpoint)))) {
+            return call_user_func(sprintf('FanCourier\EndPoint\%s::newEndpoint', ucfirst($endpoint)));
         } else {
-            throw new FanCourierApiException(sprintf('Unrecognized endpoint:%s', $endpoint), 400);
+            throw new FanCourierApiException(sprintf('Unrecognized endpoint:%s', ucfirst($endpoint)), 400);
         }
     }
 }
