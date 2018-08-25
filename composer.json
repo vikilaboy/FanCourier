@@ -1,6 +1,7 @@
 {
   "name": "vikilaboy/fan-courier",
   "description": "API for FanCourier express courier services.",
+  "version": "1.0.4",
   "authors": [
     {
       "name": "Csaba Balint",
